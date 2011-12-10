@@ -1,0 +1,11 @@
+one:
+  name: MyString
+  price: 1.5
+  per_unit: false
+  printtype_id: 1
+
+two:
+  name: MyString
+  price: 1.5
+  per_unit: false
+  printtype_id: 1

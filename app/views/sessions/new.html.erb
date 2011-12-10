@@ -1,0 +1,34 @@
+<div class="grid_12">
+<% title "Zaloguj | Kolorodruk Inowrocław" %>
+
+<div id="stylized" class="myform">
+  <% form_for resource_name, resource, :url => session_path(resource_name) do |f| -%>
+      <h2>Zaloguj</h2>
+
+      <p>Po zalogowaniu otrzymasz dostęp do listy swoich zamówień.</p>
+
+      <label>Email
+        <span class="small">Wpisz adres</span>
+      </label>
+      <%= f.text_field :email, :class=>"field" %>
+
+      <label>Hasło
+        <span class="small">Podane przy rejestracji </span>
+      </label>
+      <%= f.password_field :password, :class=>"field" %>
+
+      <%= f.submit "Zaloguj", :class=>"button" %>
+
+      <div class="spacer"></div>
+
+      <%= render :partial => "shared/devise_links" %>
+
+  <% end -%>
+</div>
+</div>
+
+
+
+
+
+

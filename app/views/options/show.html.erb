@@ -1,0 +1,26 @@
+<% title "Opcja" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @option.name %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%=h @option.price %>
+</p>
+<p>
+  <strong>Per Unit:</strong>
+  <%=h @option.per_unit %>
+</p>
+  <strong>Printtype:</strong>
+  <ul>
+  <% @option.printtypes.each do |p|%>
+  <li><%= p.name%></li>
+      <% end%>
+</ul>
+
+<p>
+  <%= link_to "Edytuj", edit_option_path(@option) %> |
+  <%= link_to "Usuń", @option, :confirm => "Czy jesteś pewny?", :method => :delete %> |
+  <%= link_to "Pokaż wszystkie", options_path %>
+</p>

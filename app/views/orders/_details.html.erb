@@ -1,0 +1,116 @@
+<% title "Zamówienie ID:#{@order.id}" %>
+
+<%- if show_title? -%>
+    <h2><%= h yield(:title) %></h2>
+    <p>Utworzono: <%= @order.created_at.strftime('%d.%m.%Y') %></p>
+    <p>Status: <span class="status"><%= @order.status%></span></p>
+      <br/>
+    <p>Zamówienie zostało przyjęte. Termin realizacji zostanie potwierdzony mailem.</p>
+<%- end -%>
+
+<table class="details">
+
+  <tr>
+    <td class="td1">Szacowana cena:</td>
+    <td class="td2 price"><span><%= h @order.total_price %> zł</span></td>
+  </tr>
+
+  <tr>
+    <td class="td1">Typ druku:</td>
+    <td class="td2"><%= @order.printtype.name %></td>
+  </tr>
+
+  <tr>
+    <td class="td1">Format:</td>
+    <td class="td2"><%= h @order.format.name %></td>
+  </tr>
+  <% if @order.format.name=="Inny" %>
+      <tr>
+        <td class="td1">Inny format:</td>
+        <td class="td2"><%= @order.other_format %></td>
+      </tr>
+  <% end %>
+  <% if @order.printtype_id==3 %>
+      <tr>
+        <td class="td1">Liczba kolorów z jednej strony:</td>
+        <td class="td2"><%= @order.number_of_colors1 %></td>
+      </tr>
+      <tr>
+        <td class="td1">Liczba kolorów z drugiej strony:</td>
+        <td class="td2"><%= @order.number_of_colors2 %></td>
+      </tr>
+  <% elsif @order.printtype_id!=4 %>
+      <tr>
+       <td class="td1">Kolor:</td>
+        <td class="td2"><%= h COLORS.index @order.color %></td>
+      </tr>
+  <% end %>
+  <tr>
+   <td class="td1">Papier:</td>
+    <td class="td2"><%= h @order.paper.name %></td>
+  </tr>
+  <% unless @order.options.blank? %>
+      <tr>
+       <td class="td1">Opcje:</td>
+        <td class="td2">
+          <ul>
+            <% @order.options.each do |o| %>
+                <li><%= o.name %></li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+  <% end %>
+  <% unless @order.info.blank? %>
+  <tr>
+    <td class="td1">Uwagi klienta:</td>
+    <td class="td2"><%= h @order.info %></td>
+  </tr>
+      <% end %>
+    <% if admin? %>
+      <%  unless @order.notes.blank?%>
+  <tr>
+    <td class="td1">Notatki admina:</td>
+    <td class="td2"><%= h @order.notes %></td>
+  </tr>
+          <% end %> 
+      <% end %>
+
+</table>
+
+<h2>Dane zamawiającego:</h2>
+
+<table class="details">
+
+  <tr>
+   <td class="td1">Imię i nazwisko / Firma:</td>
+   <td class="td2"><%= h @order.user_name %></td>
+  </tr>
+  <tr>
+    <td class="td1">Email:</td>
+    <td class="td2"><%= h @order.user_email %></td>
+  </tr>
+  <tr>
+    <td class="td1">Ulica:</td>
+   <td class="td2"><%= h @order.user_address %></td>
+  </tr>
+  <tr>
+    <td class="td1">Miasto:</td>
+    <td class="td2"><%= h @order.user_city %></td>
+  </tr>
+  <tr>
+    <td class="td1">Kod pocztowy:</td>
+    <td class="td2"><%= h @order.user_postcode %></td>
+  </tr>
+  <tr>
+    <td class="td1">Telefon:</td>
+   <td class="td2"><%= h @order.user_phone %></td>
+  </tr>
+   <%  unless @order.user_nip.blank?%>
+    <tr>
+    <td class="td1">NIP:</td>
+   <td class="td2"><%#= h @order.nip %></td>
+  </tr>
+      <% end %>
+
+</table>

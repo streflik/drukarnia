@@ -1,0 +1,99 @@
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+
+</head>
+
+<body>
+<h2>Witaj,<br/>
+  zostało złożone nowe zamówienie. Szczegóły zamówienia:
+</h2>
+
+<p><strong><%= link_to "Zamówienie ID:#{@order.id}", "http://drukarnia.megiteam.pl#{order_path(@order)}"%></strong></p>
+<p><strong>Utworzono: <%= @order.created_at.strftime('%d.%m.%Y') %></strong></p>
+<p>
+  <strong>Wartość:</strong>
+  <%= h @order.total_price %>
+</p>
+<p>
+  <strong>Typ druku:</strong>
+  <%= @order.printtype.name %>
+</p>
+<p>
+  <strong>Format:</strong>
+  <%= h @order.format.name %>
+</p>
+<% if @order.format.name=="Inny" %>
+    <p>
+      <strong>Inny format:</strong>
+      <%= @order.other_format %>
+    </p>
+<% end %>
+<% if @order.printtype_id==3 %>
+    <p>
+      <strong>Liczba kolorów z jednej strony:</strong>
+      <%= @order.number_of_colors1 %>
+    </p>
+    <p>
+      <strong>Liczba kolorów z drugiej strony:</strong>
+      <%= @order.number_of_colors2 %>
+    </p>
+<% elsif @order.printtype_id!=4 %>
+    <p>
+      <strong>Kolor:</strong>
+      <%= h COLORS.index @order.color %>
+    </p>
+<% end %>
+<p>
+  <strong>Papier:</strong>
+  <%= h @order.paper.name %>
+</p>
+<p>
+  <strong>Opcje:</strong>
+  <% @order.options.each do |o| %>
+      <%= o.name %>
+  <% end %>
+</p>
+<p>
+  <strong>Uwagi:</strong>
+  <%= h @order.info %>
+</p>
+<h2>Dane zamawiającego:</h2>
+<p>
+  <strong>Imię i nazwisko:</strong>
+  <%= h @order.user_name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= h @order.user_email %>
+</p>
+<p>
+  <strong>Ulica:</strong>
+  <%= h @order.user_address %>
+</p>
+<p>
+  <strong>Miasto:</strong>
+  <%= h @order.user_city %>
+</p>
+<p>
+  <strong>Kod pocztowy:</strong>
+  <%= h @order.user_postcode %>
+</p>
+<p>
+  <strong>Telefon:</strong>
+  <%= h @order.user_phone %>
+</p>
+<p>
+  <strong>NIP:</strong>
+  <%= h @order.user_nip %>
+</p>
+<h2>Przesłane pliki:</h2>
+<ul style="list-style:decimal">
+<% @order.images.each do |i|%>
+  <li><%= link_to i.content_file_name, i.content.url%></li>
+  <% end%>
+    </ul>
+
+
+</body>
+</html>

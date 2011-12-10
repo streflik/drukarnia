@@ -1,0 +1,22 @@
+<% form_for @price do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+  <p>
+    <%= f.label :bracket %><br />
+    <%= f.text_field :bracket %>
+  </p>
+  <p>
+    <%= f.label :color %><br />
+    <%= f.select :color, COLORS %>
+  </p>
+  <p>
+    <%= f.label :format_id %><br />
+    <%= f.grouped_collection_select :format_id,@printtypes,:formats,:name , :id,:name%></p>
+
+    <p><%= f.label :printtype_id%><br/>
+    <%= f.collection_select :printtype_id, Printtype.all, :id,:name%></p>
+  <p><%= f.submit "Zapisz"%></p>
+<% end %>

@@ -1,0 +1,90 @@
+<!-- root element for scrollable -->
+<div class="scrollable" id=chained>
+
+  <!-- root element for the items -->
+  <div class="items">
+
+    <!-- promotion -->
+
+
+    <% for promotion in @promotions %>
+
+        <div style="background-image:url('<%="/images/#{promotion.poster.url}"%>')">
+          <span class="panel">
+              <h2>NOWE PROMOCJE</h2>
+              <h3><%= link_to promotion.title, promotion %></h3>
+            </span>
+        </div>
+    <% end %>
+
+  </div>
+
+</div>
+
+<!-- wrapper for navigator elements -->
+<div class="navi"></div>
+
+
+<div class="clear">&nbsp;</div>
+
+<div class="box first">
+  <div class="int">
+    <h2>Zamówienie</h2>
+
+    <p>Lorem</p>
+    <ul>
+      <li><span><%= link_to "Druk cyfrowy", new_order_path(:printtype=>1) %></span></li>
+      <li><span><%= link_to "Druk offsetowy", new_order_path(:printtype=>2) %></span></li>
+      <li><span><%= link_to "Druk wielkoformatowy", new_order_path(:printtype=>4) %></span></li>
+      <li><span><%= link_to "Sitodruk", new_order_path(:printtype=>3) %></span></li>
+    </ul>
+  </div>
+</div>
+<div class="box second">
+  <div class="int">
+    <h2>Realizacje</h2>
+
+    <p>Lorem</p>
+    <ul>
+      <li><span><%= link_to "O nas" %></span></li>
+    </ul>
+  </div>
+</div>
+<div class="box third">
+  <div class="int">
+    <h2>Niestandardowe<br/> zamówienia</h2>
+
+    <p>Lorem</p>
+    <ul>
+      <li><span><%= link_to "Kontakt" %></span></li>
+    </ul>
+  </div>
+</div>
+
+<div class="clear">&nbsp;</div>
+
+<%= render :partial => 'news' %>
+
+<div class="clear">&nbsp;</div>
+
+
+
+<% content_for :head do %>
+    <!-- include the Tools -->
+    <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js"></script>
+
+
+    <!-- javascript coding -->
+    <script>
+        // What is $(document).ready ? See: http://flowplayer.org/tools/documentation/basics.html#document_ready
+        $(document).ready(function() {
+
+// heeeeeeeeeeere we go.
+            $("#chained").scrollable({circular: true, mousewheel: true}).navigator().autoscroll({
+                interval: 7000
+            });
+        });
+    </script>
+<% end %>
+
+

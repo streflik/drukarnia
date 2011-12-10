@@ -1,0 +1,20 @@
+<% title @update.title + " | Kolorodruk Inowrocław" %>
+
+<div class="news_show">
+
+<h1><%=h @update.title %></h1>
+          <p class="meta">
+            opublikowano: <span><%= @update.created_at.strftime("%d.%m.%Y") %></span>
+            <% if admin? %>
+                | <%= link_to "Edytuj", edit_update_path(@update) %>
+                | <%= link_to "Usuń", @update, :confirm => 'Czy jesteś pewien?', :method => :delete %>
+            <% end %>
+          </p>
+
+<%= image_tag @update.poster.url, :class=>"pstr" if @update.poster.file? %>
+
+
+<%= @update.body %>
+
+
+</div>

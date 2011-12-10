@@ -1,0 +1,35 @@
+<% title "Zaloguj" %>
+
+<div id="stylized" class="myform">
+  <% form_for :user_reg, @user, :url => registration_path(:user) do |f| -%>
+      <%= render :partial => 'registrations/reg_fields', :locals => {:f => f} %>
+      <%= hidden_field_tag :order_id, @order %>
+  <% end %>
+</div>
+
+<div id="stylized" class="myform" style="margin:20px 0">
+<% form_for :user, @user_login, :url => session_path(:user) do |l| -%>
+      <h2>Zaloguj</h2>
+
+      <p>Jeśli posiadasz już u nas konto.</p>
+
+    <label>Email
+      <span class="small">Wpisz adres</span>
+    </label>
+    <%= l.text_field :email, :class=>"field" %>
+
+    <label>Hasło
+      <span class="small">Podane przy rejestracji </span>
+    </label>
+    <%= l.password_field :password, :class=>"field" %>
+
+    <%= l.submit "Zaloguj", :class=>"button" %>
+
+    <div class="spacer"></div>
+
+    <%= hidden_field_tag :order_id, @order %>
+<% end -%>
+  </div>
+
+<%= link_to "Przejdź do dalszej części zamówienia bez logowania", step_two_order_path(:id=>@order), :class=>"next" %>
+

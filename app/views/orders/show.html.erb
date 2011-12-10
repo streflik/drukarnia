@@ -1,0 +1,24 @@
+<%= render :partial => 'details' %>
+
+<h2>Przesłane pliki:</h2>
+
+<ul>
+  <% unless @order.images.blank? %>
+<% @order.images.each do |i|%>
+  <li><%= link_to i.content_file_name, i.content.url%></li>  
+  <% end %>
+  <% else %>
+      <li>Brak dodanych plików.</li>
+      <% end %>
+</ul>
+
+
+<p class="edit">
+  <% if admin? %>
+      <%= link_to "Edytuj zamówienie", edit_order_path(@order) %> |
+      <%= link_to "Usuń zamówienie", @order, :confirm => "Czy jesteś pewny?", :method => :delete %> |
+      <%= link_to "Zobacz wszystkie zamówienia", orders_path %>
+  <% else %>
+      <%= link_to "Twoje konto", current_user %>
+  <% end %>
+</p>

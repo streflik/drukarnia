@@ -1,0 +1,25 @@
+<table class="orders">
+  <tr>
+    <th>ID</th>
+    <th>Email</th>
+    <th>Typ</th>
+    <th>Cena</th>
+     <th>Data</th>
+     <th>Status</th>
+  </tr>
+  <% for order in @orders %>
+      <tr>
+        <td><%= h order.id %></td>
+        <td><%= h order.user_email %></td>
+        <td><%= h order.printtype.name %></td>
+        <td><%= h order.total_price %></td>
+        <td><%= h order.created_at.strftime('%d.%m.%Y') %></td>
+        <td><%= h order.status %></td>
+          <td><%= link_to "Pokaż", order %></td>
+        <% if admin? %>
+             <td><%= link_to "Edycja",edit_order_path(order) %></td>
+            <td><%= link_to "Usuń", order, :confirm => "Czy jesteś pewny?", :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>

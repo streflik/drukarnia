@@ -1,0 +1,54 @@
+<h2>Zarejestruj</h2>
+
+<p>Łatwo złożysz kolejne zamówienia. Bez ponownego wpisywania danych.</p>
+
+<%= f.error_messages %>
+
+<label>Email
+  <span class="small">Wpisz adres</span>
+</label>
+<%= f.text_field :email, :class=>"field" %>
+
+<label>Hasło
+  <span class="small">Wpisz hasło</span>
+</label>
+<%= f.password_field :password, :class=>"field" %>
+
+<label>Hasło ponownie
+  <span class="small">Wpisz ponownie hasło</span>
+</label>
+<%= f.password_field :password_confirmation, :class=>"field" %>
+
+<label>Imię i nazwisko / Firma
+  <span class="small">Na kogo wystawiać faktury?</span>
+</label>
+<%= f.text_field :name, :class=>"field" %>
+
+<label>Ulica
+  <span class="small">Wpisz ulicę</span>
+</label>
+<%= f.text_field :address, :class=>"field" %>
+
+<label>Miasto
+  <span class="small">Wpisz miasto</span>
+</label>
+<%= f.text_field :city, :class=>"field" %>
+
+<label>Kod pocztowy
+  <span class="small">Wpisz kod pocztowy</span>
+</label>
+<%= f.text_field :postcode, :class=>"field" %>
+
+<label>Telefon
+  <span class="small">Wpisz telefon</span>
+</label>
+<%= f.text_field :phone, :class=>"field" %>
+
+<label>NIP
+  <span class="small">W przypadku firmy</span>
+</label>
+<%= f.text_field :nip, :class=>"field" %>
+
+<%= f.submit "Zarejestruj", :class=>"button" %>
+
+<div class="spacer"></div>

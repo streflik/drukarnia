@@ -1,0 +1,26 @@
+<% title "Papier" %>
+
+<p>
+  <strong>Nazwa:</strong>
+  <%=h @paper.name %>
+</p>
+<p>
+  <strong>Szerokość:</strong>
+  <%=h @paper.width %>
+</p>
+<p>
+  <strong>Cena:</strong>
+  <%=h @paper.price %>
+</p>
+  <strong>Typ druku:</strong>
+  <ul>
+  <% @paper.printtypes.each do |p|%>
+  <li><%= p.name%></li>
+      <% end%>
+</ul>
+
+<p>
+  <%= link_to "Edytuj", edit_paper_path(@paper) %> |
+  <%= link_to "Usuń", @paper, :confirm => "Czy jesteś pewny?", :method => :delete %> |
+  <%= link_to "Pokaż wszystkie", papers_path %>
+</p>

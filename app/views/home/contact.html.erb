@@ -1,0 +1,34 @@
+
+  <div style="float:left;margin:50px 30px;;padding-right:70px;">
+    <h2>kolorodruk</h2>
+<p>ul. Budowlana 4</p>
+<p>88-100 Inowrocław</p><br/>
+<p>tel. 52 353 89 53</p>
+<p>tel. kom. 664 786 271</p>
+<p>e-mail: kolorodruk@wp.pl</p>
+ </div>
+
+   <div id="map_canvas" style="width:370px; height:250px;"></div>
+
+
+<script type="text/javascript"  src="http://maps.google.com/maps/api/js?sensor=false">
+</script>
+
+<script type="text/javascript">
+  initialize();
+  function initialize() {
+    var latlng = new google.maps.LatLng(52.768617,18.249595);
+    var myOptions = {
+      zoom: 15,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var map = new google.maps.Map(document.getElementById("map_canvas"),
+        myOptions);
+      var marker=new google.maps.Marker({
+              position: latlng,
+                map: map
+      });
+  }
+
+</script>

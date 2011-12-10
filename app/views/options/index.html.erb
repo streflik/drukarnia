@@ -1,0 +1,23 @@
+<% title "Opcje" %>
+
+<table>
+  <tr>
+    <th>Nazwa</th>
+    <th>Cena</th>
+    <th>od ilości?</th>
+    <th>Typ druku</th>
+  </tr>
+  <% for option in @options %>
+    <tr>
+      <td><%=h option.name %></td>
+      <td><%=h option.price %></td>
+      <td><%=h option.per_unit %></td>
+      <td><%=h option.printtypes.collect{|p|p.name+" | "}%></td>
+      <td><%= link_to "Pokaż", option %></td>
+      <td><%= link_to "Edytuj", edit_option_path(option) %></td>
+      <td><%= link_to "Usuń", option, :confirm => "Czy jesteś pewny?", :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Nowa opcja", new_option_path %></p>

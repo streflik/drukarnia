@@ -1,0 +1,39 @@
+<% title "Edytuj dane" %>
+
+<div id="stylized" class="myform">
+<% form_for @user do |f| %>
+
+            <h2>Edytuj dane</h2>
+
+      <p>Posłużą Ci do szybkiego składania zamówień.</p>
+
+  <%= f.error_messages %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email, :class=>"field"  %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, :class=>"field"  %>
+
+    <%= f.label :address %>
+    <%= f.text_field :address, :class=>"field"  %>
+
+    <%= f.label :city %>
+    <%= f.text_field :city, :class=>"field"  %>
+
+    <%= f.label :postcode %>
+    <%= f.text_field :postcode, :class=>"field"  %>
+
+    <%= f.label :phone %>
+    <%= f.text_field :phone, :class=>"field"  %>
+
+    <%= f.label :nip %>
+    <%= f.text_field :nip, :class=>"field"  %>
+
+            <%= f.submit "Zapisz", :class=>"button" %>
+
+      <div class="spacer"></div>
+
+<% end %>
+    </div>
+

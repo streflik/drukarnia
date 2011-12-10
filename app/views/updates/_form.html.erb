@@ -1,0 +1,28 @@
+
+
+<% form_for @update, :html=>{:multipart=>true} do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+
+        <p>
+     <%= f.label :poster, "Zdjęcie 670/215px" %><br />
+      <%= f.file_field :poster%>
+    </p>
+
+            <p>
+      <%= f.label :is_promotion, "Promocja umieszczona w sliderze na głównej" %><br />
+      <%= f.check_box :is_promotion %>
+    </p>
+
+  <p>
+    <%= f.label :body %><br />
+    <%= f.tinymce:body , :style=>"width:500px;"%>
+  </p>
+
+
+  <p><%= f.submit "Zapisz", :class=>"add" %></p>
+<% end %>

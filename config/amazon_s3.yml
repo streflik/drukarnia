@@ -1,0 +1,12 @@
+development:
+  bucket_name: drukarnia1
+  access_key_id: AKIAIIJKMQOROQEP2YPQ
+  secret_access_key: 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
+  acl: public-read
+  max_file_size: 209715200
+production:
+  bucket_name: drukarnia1
+  access_key_id: AKIAIIJKMQOROQEP2YPQ
+  secret_access_key: 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
+  acl: public-read
+  max_file_size: 209715200

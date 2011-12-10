@@ -1,0 +1,27 @@
+<% title "Zmień hasło" %>
+<div id="stylized" class="myform">
+  <% form_for resource_name, resource, :url => password_path(resource_name) do |f| %>
+      <h3>Zapomniane hasło?</h3>
+
+      <p>Bez obaw, nasz system pomoże wygenerować nowe.</p>
+
+      <%= f.error_messages %>
+
+    <label>Email
+      <span class="small">Wpisz adres</span>
+    </label>
+      <%= f.text_field :email, :class=>"field" %>
+
+      <%= f.submit "Przypomnij", :class=>"button" %>
+
+      <div class="spacer"></div>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+

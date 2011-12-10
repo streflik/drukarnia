@@ -1,0 +1,14 @@
+pl:
+  orders: zamowienia
+  edit: edycja
+  destroy: usun
+  show: pokaz
+  new: nowe
+  users: uzytkownicy
+  step_two: szczegoly
+  change_password: zmien_haslo
+  sign_out: wyloguj
+  updates: aktualnosci
+  sign_up: zarejestruj
+  sign_in: zaloguj
+  password: haslo

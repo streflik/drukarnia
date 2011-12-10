@@ -1,0 +1,657 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #fff;
+    background-color: #1F1D1D
+}
+
+/* link underlined */
+
+a:hover, .nav a, .footer a, .news a, .panel a  {
+    text-decoration: none
+}
+
+a, .nav a:hover, .footer a:hover, .news a:hover, .panel a:hover {
+    text-decoration:underline;
+}
+
+a {
+    color: #FFF200;
+}
+
+.header a, .footer a, .news a, .panel a {
+    color:#fff
+}
+
+
+.bg {
+    background: url("/images/bg_1.gif") #212121 no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+    width: 960px;
+    margin-top:10px
+}
+
+h2 {
+    font-size:20px;
+    text-transform:uppercase;
+}
+
+/************* HEADER */
+
+.header {
+    height: 170px;
+    padding-top: 40px;
+}
+
+.header .flash {
+    margin:0 0 10px 40px;
+    padding:5px;
+    width:auto;
+    float:left
+}
+
+#flash_alert {
+     background-color:red;   
+}
+#flash_notice {
+     background-color:green;
+}
+
+.header .admin {
+    padding:0 40px 20px 40px
+}
+
+.admin ul li {
+        display: inline
+}
+
+/************* LOGO */
+
+.header .logo {
+    width: 270px;
+    height: 106px;
+    float: left;
+    padding: 0 40px 60px 40px
+}
+
+/************* MENU */
+
+.header .menu {
+    float: left
+}
+
+.menu, .nav {
+    width:610px
+}
+
+/************* ACCOUNT */
+
+.account {
+    margin-bottom: 10px
+}
+
+.account a {
+    color: #CACAC8;
+    line-height: 16px
+}
+
+.account li {
+    font-size: 14px;
+    margin-right: 10px;
+    display:inline
+
+}
+
+.divider {
+    color: #CACAC8;
+}
+
+.fb {
+}
+
+/************* NAV */
+
+.nav li {
+    float: left;
+    display: block;
+    width: 120px;
+    height: 40px;
+    margin-right: 4px;
+    border-top: 5px solid red;
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    text-align: right;
+    font-weight: bold;
+    line-height: 1.5
+}
+
+.nav li.n1 {
+    border-color: #00AEEF
+}
+
+.nav li.n1 a {
+    color: #00AEEF
+}
+
+.nav li.n2 {
+    border-color: #EC008C
+}
+
+.nav li.n2 a {
+    color: #EC008C
+}
+
+.nav li.n3 {
+    border-color: #FFF200
+}
+
+.nav li.n3 a {
+    color: #FFF200
+}
+
+.nav li.n4 {
+    border-color: #fff;
+    width: 180px
+}
+
+.nav li.n4 a {
+    color: #fff
+}
+
+/************* CONTAINER */
+
+.container {
+    padding: 0 145px 50px 145px;
+    line-height:1.5
+}
+
+/************* SLIDES */
+
+/*
+	root element for the scrollable.
+	when scrolling occurs this element stays still.
+*/
+.scrollable {
+
+/* required settings */
+    position: relative;
+    overflow: hidden;
+    width: 670px;
+    height: 215px;
+    border-bottom: 5px solid #EC008C
+}
+
+/*
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a extremely large width to accomodate scrollable items.
+	it's enough that you set the width and height for the root element and
+	not for this element.
+*/
+.scrollable .items {
+/* this cannot be too large */
+    width: 20000em;
+    position: absolute;
+    clear: both;
+}
+
+.items div {
+    float: left;
+    width: 940px;
+    height: 215px;
+}
+
+.items .panel {
+    float: left;
+    width: 640px;
+    background: #00AEEF;
+    text-align: right;
+    padding: 10px 20px 10px 10px
+}
+
+.panel h2 {
+    font-size: 20px;
+    line-height: 20px;
+    margin:0 0 2px 0;
+}
+
+.panel {
+  font-size:18px;
+    line-height:18px
+}
+
+.panel h3 {
+    text-transform: uppercase;
+    font-weight: normal
+}
+
+.panel h3 a {
+    color: #000;
+}
+
+/* position and dimensions of the navigator */
+.navi {
+    width: 200px;
+    height: 20px;
+}
+
+/* items inside navigator */
+.navi a {
+    width: 8px;
+    height: 8px;
+    float: left;
+    margin: 3px;
+    background: url(/images/navigator.png) 0 0 no-repeat;
+    display: block;
+    font-size: 1px;
+}
+
+/* mouseover state */
+.navi a:hover {
+    background-position: 0 -8px;
+}
+
+/* active state (current page state) */
+.navi a.active {
+    background-position: 0 -16px;
+}
+
+/************* BOX */
+
+.box {
+    float: left;
+    width: 219px;
+    height: 435px;
+    margin-right: 5px;
+    margin-top: 25px;
+    margin-bottom: 40px;
+    background: #373534;
+    line-height:1
+}
+
+.box.first .int {
+    background: url("/images/box_1.gif") no-repeat;
+    height: 166px;
+}
+
+.box.second .int {
+    background: url("/images/box_2.gif") no-repeat;
+    height: 166px;
+}
+
+.box.third .int {
+    background: url("/images/box_3.gif") no-repeat;
+    height: 166px;
+}
+
+.box.third {
+    margin-right: 0
+}
+
+.box h2, .news h2 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    line-height: 1.2;
+    display: block;
+    width: 194px;
+    height: 55px;
+    padding: 15px 0 0 25px;
+    margin-bottom: 100px;
+    color: #000
+}
+
+.box p {
+    padding: 10px;
+    height: 217px;
+    line-height: 16px
+}
+
+.box ul li span {
+    padding: 6px;
+    margin-top: 4px;
+    width: 170px;
+    display: block;
+    text-align: right;
+    text-transform: uppercase;
+    float: right;
+}
+
+.box a {
+    color: #000
+}
+
+.box.first p {
+    height: 133px
+}
+
+.box.first span {
+    background: #FFF200;
+}
+
+.box.second span {
+    background: #EC008C;
+}
+
+.box.third span {
+    background: #00AEEF;
+}
+
+/************* NEWS */
+
+.news {
+    float: left;
+    width: 443px;
+    background: url("/images/bg_news.gif") no-repeat #373534;
+    margin-right:5px;
+    padding-bottom:20px
+}
+
+.news h2 {
+    margin-bottom: 10px
+}
+
+.news ul li {
+    padding: 0 10px 10px 10px
+}
+
+.news h3 {
+    font-size: 14px;
+    padding: 5px 0
+}
+
+.meta {
+    font-size: 11px
+}
+
+.meta span {
+    color: #FFF200
+}
+
+/************* LIKEPAGE */
+
+.like {
+    float:left;
+    width:219px
+}
+
+/************* FOOTER */
+
+.footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 650px;
+    height:140px;
+    background:#373534;
+    border-top:5px solid #EC008C;
+    padding:50px 155px 0 155px;
+    font-size:20px;
+    text-transform:uppercase;
+}
+
+.footer ul {
+    width:300px;
+    float:left;
+    display:block;
+}
+
+.footer ul li {
+    padding:3px 0
+}
+
+
+/************* FORMS */
+
+/* ----------- My Form ----------- */
+.myform {
+    width: 400px;
+    padding: 14px;
+}
+
+/* ----------- stylized ----------- */
+#stylized {
+    border: solid 1px #eee;
+      line-height:1.6em;
+margin: 0 auto
+}
+
+#stylized h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+#stylized p {
+    margin-bottom: 20px;
+    border-bottom: solid 1px #eee;
+    padding-bottom: 10px;
+    font-size: 11px
+}
+
+#stylized label {
+    display: block;
+    font-weight: bold;
+    text-align: right;
+    width: 140px;
+    float: left;
+    line-height:1.2em
+}
+
+#stylized .small {
+    display: block;
+    font-size: 11px;
+    font-weight: normal;
+    text-align: right;
+    width: 140px;
+    color:white
+}
+
+#stylized input.field, #stylized select, #stylized textarea {
+    float: left;
+    font-size: 12px;
+    padding: 4px 2px;
+    border: solid 1px #eee;
+    width: 200px;
+    margin: 2px 0 20px 10px;
+}
+
+#stylized textarea {
+    height: 50px
+}
+
+#stylized .placer {
+    float: left;
+    width: 240px;
+    margin: 2px 0 20px 10px;
+}
+
+#stylized .uploaded {
+    margin-bottom: 40px
+}
+
+#stylized input.button, .add {
+    clear: both;
+    margin-left: 150px;
+    width: 143px;
+    height: 48px;
+    padding: 0;
+    background: url(/images/btn_1.png) no-repeat;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 16px;
+    border: none
+}
+
+.add {
+margin-left:0
+}
+
+.new_update p,.edit_update p {
+    margin:0 0 10px 0
+}
+
+.mceContentBody body {
+    font-size:12px !important
+}
+
+
+/************* NEWS */
+
+.news_show h1 {
+    font-size: 16px;
+    margin-bottom:5px
+}
+
+.news_show .meta {
+    margin-bottom:20px
+}
+
+.news_show p, .news_show ul, .news_show ol,.news_show .pstr {
+margin-bottom:15px;
+    text-align:justify;
+}
+
+.news_show .pstr {
+   border-bottom: 5px solid #EC008C
+}
+
+.news_show ul li {
+    list-style:disc;
+    margin-left:15px
+}
+
+.news_show ol li {
+    list-style:decimal;
+    margin-left:20px   
+}
+
+/************* DETAILS */
+
+table.details {
+    margin: 20px 0 40px;
+}
+
+table td, table th {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;;
+    font-size:11px
+}
+
+table td.td1 {
+    width: 120px;
+}
+
+table td.td2 {
+    font-size: 12px;
+    font-weight: bold
+}
+
+.status {
+    font-size: 12px;
+    font-weight: bold
+}
+
+.edit {
+    margin: 40px 0
+}
+
+p.price {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 20px
+}
+
+p.price span, td.price span {
+    font-size: 16px;
+    color: green
+}
+
+/************* HELP */
+
+.help {
+    float:right;
+    width:300px;
+    line-height:1.5
+}
+
+.help h2 {
+    margin-bottom: 20px
+
+}
+
+.help img {
+    float: left;
+    margin: 0 10px 0 0;
+    padding: 2px;
+    border: 1px solid #ddd
+}
+
+.help .solution {
+    margin-bottom: 10px
+}
+
+/************* ORDERS */
+
+table.orders {
+    margin: 20px 0;
+    text-align: left
+}
+
+/************* ERRORS */
+
+#stylized .fieldWithErrors input.field {
+    border: solid 1px red
+}
+
+.errorExplanation {
+    border-left: 1px solid red;
+    padding: 0 14px;
+    margin-bottom: 20px;
+    line-height:1.5em
+}
+
+#stylized .errorExplanation h2 {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+#stylized .errorExplanation p {
+    padding-bottom: 0;
+    margin-bottom: 10px;
+    font-size: 11px;
+    border: 0
+}
+
+.errorExplanation h2 {
+    display:none
+}
+
+/* Clear Floated Elements
+----------------------------------------------------------------------------------------------------*/
+
+.clear {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,9 @@
+one:
+  name: MyString
+  value: 1
+  printtype_id: 1
+
+two:
+  name: MyString
+  value: 1
+  printtype_id: 1

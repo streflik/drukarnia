@@ -1,0 +1,47 @@
+<% title "Twoje konto" %>
+
+<%= render :partial => 'help' %>
+
+<h2>Twoje dane (<%= link_to "Edytuj", edit_user_path(@user) %>):</h2>
+
+<table class="details">
+  <tr>
+   <td class="td1">Imię i nazwisko / Firma:</td>
+   <td class="td2"><%= h @user.name %></td>
+  </tr>
+  <tr>
+    <td class="td1">Email:</td>
+    <td class="td2"><%= h @user.email %></td>
+  </tr>
+  <tr>
+    <td class="td1">Ulica:</td>
+   <td class="td2"><%= h @user.address %></td>
+  </tr>
+  <tr>
+    <td class="td1">Miasto:</td>
+    <td class="td2"><%= h @user.city %></td>
+  </tr>
+  <tr>
+    <td class="td1">Kod:</td>
+    <td class="td2"><%= h @user.postcode %></td>
+  </tr>
+  <tr>
+    <td class="td1">Telefon:</td>
+   <td class="td2"><%= h @user.phone %></td>
+  </tr>
+  <% unless @user.nip.blank? %>
+    <tr>
+    <td class="td1">NIP:</td>
+   <td class="td2"><%= h @user.nip %></td>
+  </tr>
+      <% end %>
+</table>
+
+<h2>Twoje zamówienia:</h2>
+
+<% if @orders.empty? %>   
+    <p>Nie złożyłeś jeszcze żadnych zamówień.</p>
+<% else %>
+    <%= render "orders/index" %>
+<% end %>
+

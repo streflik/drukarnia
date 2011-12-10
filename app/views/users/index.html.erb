@@ -1,0 +1,28 @@
+<div class="grid_12">
+<% title "Użytkownicy" %>
+
+<table class="orders">
+  <tr>
+    <th>Email</th>
+            <th>Nazwa</th>
+    <th>Ulica</th>
+    <th>Miasto</th>
+    <th>Kod pocztowy</th>
+    <th>Telefon</th>
+  </tr>
+  <% for user in @users %>
+    <tr>
+      <td><%=h user.email %></td>
+      <td><%=h user.name %></td>      
+      <td><%=h user.address %></td>
+      <td><%=h user.city %></td>
+      <td><%=h user.postcode %></td>
+      <td><%=h user.phone %></td>
+      <td><%= link_to "Pokaż", user %></td>
+      <td><%= link_to "Edytuj", edit_user_path(user) %></td>
+      <td><%= link_to "Usuń", user, :confirm => 'Czy jesteś pewien?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+    </div>
+

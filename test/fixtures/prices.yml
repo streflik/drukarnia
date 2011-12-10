@@ -1,0 +1,11 @@
+one:
+  value: 1.5
+  bracket: 1
+  color: 1
+  format: MyString
+
+two:
+  value: 1.5
+  bracket: 1
+  color: 1
+  format: MyString

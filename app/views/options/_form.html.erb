@@ -1,0 +1,30 @@
+<% form_for @option do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :per_unit %><br />
+    <%= f.check_box :per_unit %>
+  </p>
+<p>
+    <%= f.label :printtype_id %><br />
+      </p>
+    <ul>
+
+    <% Printtype.all.each do |t|%>
+    <li>
+      <%= @option.printtypes.include?(t) %>
+            <%= check_box_tag "option[printtype_ids][]", t.id%>
+            <span><%= t.name%></span>
+          </li>
+
+          <% end%>
+        </ul>
+  <p><%= f.submit "Zapisz"%></p>
+<% end %>

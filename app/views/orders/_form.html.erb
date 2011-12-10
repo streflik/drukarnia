@@ -1,0 +1,173 @@
+<div id="stylized" class="myform">
+  <% form_for @order, :html=>{:multipart=>true} do |f| %>
+
+
+          <h2><%= @printtype.name %></h2>
+
+
+      <p>Złóż zamówienie. W kolejnym kroku poznasz cenę i uzupełnisz dane.</p>
+
+      <%= f.error_messages %>
+
+      <%= f.hidden_field :printtype_id, :value=>@printtype.id %>
+
+      <%= f.label :quantity %>
+      <%= f.text_field :quantity, :class=>"field" %>
+
+      <%= f.label :format_id %>
+      <div class="placer">
+        <ul style="list-style:none;">
+          <% @printtype.formats.each do |k| %>
+              <li>
+                <% if k.printtype_id==4 && k.value==1 %>
+                    <%= f.radio_button :format_id, k.id, :id=>"other", :onchange=>"showFormat();" %>
+                <% else %>
+                    <%= f.radio_button :format_id, k.id, :onchange=>"showFormat();" %>
+                <% end %>
+                <%= k.name %>
+              </li>
+          <% end %>
+        </ul>
+        <div id="otherFormat" style="display:none;">
+          <%= f.text_field :other_format %>
+          <br/>
+          <small>np. 60x70, maksymalna szerokość 100mm.</small>
+        </div>
+      </div>
+
+      <% if @printtype.id==3 %>
+
+          <%= f.label :number_of_colors1 %>
+
+          <div class="placer">
+            <div id="track1" style="background-image:url('/images/bg-fader.gif'); background-repeat:no-repeat; width:209px; height:28px;">
+              <div id="handle1" style="background-image:url('/images/thumb-n.gif'); background-repeat:no-repeat; width:17px; height:21px; cursor:move;"></div>
+            </div>
+            <%= f.text_field :number_of_colors1, :style=>"border:none;" %>
+          </div>
+
+          <%= f.label :number_of_colors2 %>
+
+          <div class="placer">
+            <div id="track2" style="background-image:url('/images/bg-fader.gif'); background-repeat:no-repeat; width:209px; height:28px;">
+              <div id="handle2" style="background-image:url('/images/thumb-n.gif'); background-repeat:no-repeat; width:17px; height:21px; cursor:move;"></div>
+            </div>
+            <%= f.text_field :number_of_colors2, :style=>"border:none;" %>
+          </div>
+
+      <% elsif @printtype.id!=4 %>
+          <%= f.label :color %>
+          <%= f.select :color, COLORS, :class=>"field" %>
+      <% end %>
+
+      <%= f.label :paper %>
+      <%= f.collection_select :paper_id, @printtype.papers.all(:conditions=>["width !=60 or width is null"]), :id, :name %>
+
+      <%= f.label :options %>
+      <div class="placer">
+        <ul style="list-style:none">
+          <% @printtype.options.each do |o| %>
+              <li>
+                <%= check_box_tag "order[option_ids][]", o.id %>
+                <span><%= o.name %> Cena: <%= o.price %> zł</span>
+              </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <% if admin? %>
+          <label>Status
+            <span class="small">Na jakim etapie?</span>
+          </label>
+          <%= f.select :status, ["Potwierdzane", "Realizowane", "Zakończone"], :class=>"field"%>
+          
+          <label>Notatki
+            <span class="small">Notatki o zamówieniu</span>
+          </label>
+          <%= f.text_area :notes%>
+      <% end %>
+
+      <%= f.submit "Przejdź dalej", :class=>"button" %>
+
+      <div class="spacer"></div>
+
+  <% end %>
+
+
+</div>
+
+<script type="text/javascript">
+
+
+    function showFormat() {
+        if ($('other').checked == 1) {
+            $('otherFormat').show();
+
+        } else {
+            $('otherFormat').hide();
+        }
+    }
+
+</script>
+<script type="text/javascript" language="javascript">
+
+    window.onload = function() {
+        var s1 = new Control.Slider('handle1', 'track1', {axis:'horizontal', range: $R(1, 4), values: [1,2,3,4]});
+        var s2 = new Control.Slider('handle2', 'track2', {axis:'horizontal', range: $R(0, 4), values: [0,1,2,3,4]});
+        s1.options.onChange = function(value) {
+            $('order_number_of_colors1').value = value;
+        };
+        $('order_number_of_colors1').value = s1.value;
+        s2.options.onChange = function(value) {
+            $('order_number_of_colors2').value = value;
+        };
+        $('order_number_of_colors2').value = s2.value;
+
+    }
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+
+
+    function showFormat() {
+        if ($('other').checked == 1) {
+            $('otherFormat').show();
+
+        } else {
+            $('otherFormat').hide();
+        }
+    }
+
+</script>
+<script type="text/javascript" language="javascript">
+
+    window.onload = function() {
+        var s1 = new Control.Slider('handle1', 'track1', {axis:'horizontal', range: $R(1, 4), values: [1,2,3,4]});
+        var s2 = new Control.Slider('handle2', 'track2', {axis:'horizontal', range: $R(0, 4), values: [0,1,2,3,4]});
+        s1.options.onChange = function(value) {
+            $('order_number_of_colors1').value = value;
+        };
+        $('order_number_of_colors1').value = s1.value;
+        s2.options.onChange = function(value) {
+            $('order_number_of_colors2').value = value;
+        };
+        $('order_number_of_colors2').value = s2.value;
+
+    }
+
+</script>

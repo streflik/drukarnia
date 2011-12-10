@@ -1,0 +1,21 @@
+<% title "Formaty" %>
+
+<table>
+  <tr>
+    <th>Nazwa</th>
+    <th>Wartość</th>
+    <th>Typ druku</th>
+  </tr>
+  <% for format in @formats %>
+    <tr>
+      <td><%=h format.name %></td>
+      <td><%=h format.value %></td>
+      <td><%=h format.printtype_id %></td>
+      <td><%= link_to "Pokaż", format %></td>
+      <td><%= link_to "Edytuj", edit_format_path(format) %></td>
+      <td><%= link_to "Usuń", format, :confirm => "Czy jesteś pewny?", :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Nowy Format", new_format_path %></p>

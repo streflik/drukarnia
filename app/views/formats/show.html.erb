@@ -1,0 +1,24 @@
+<% title "Format" %>
+
+<p>
+  <strong>Nazwa:</strong>
+  <%=h @format.name %>
+</p>
+<p>
+  <strong>Szerokość:</strong>
+  <%=h @format.value %>
+</p>
+<p>
+  <strong>Długość:</strong>
+  <%=h @format.width %>
+</p>
+<p>
+  <strong>Typ druku:</strong>
+  <%=h @format.printtype_id %>
+</p>
+
+<p>
+  <%= link_to "Edytuj", edit_format_path(@format) %> |
+  <%= link_to "Usuń", @format, :confirm => "Czy jesteś pewny?", :method => :delete %> |
+  <%= link_to "Pokaż wszystkie", formats_path %>
+</p>

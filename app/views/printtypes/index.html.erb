@@ -1,0 +1,17 @@
+<% title "Dypy druku" %>
+
+<table>
+  <tr>
+    <th>Nazwa</th>
+  </tr>
+  <% for printtype in @printtypes %>
+    <tr>
+      <td><%=h printtype.name %></td>
+      <td><%= link_to "Pokaż", printtype %></td>
+      <td><%= link_to "Edytuj", edit_printtype_path(printtype) %></td>
+      <td><%= link_to "Usuń", printtype, :confirm => "Czy jesteś pewny?", :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Nowy typ druku", new_printtype_path %></p>

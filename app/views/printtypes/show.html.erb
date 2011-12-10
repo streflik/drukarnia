@@ -1,0 +1,12 @@
+<% title "Typ druku" %>
+
+<p>
+  <strong>Nazwa:</strong>
+  <%=h @printtype.name %>
+</p>
+
+<p>
+  <%= link_to "Edytuj", edit_printtype_path(@printtype) %> |
+  <%= link_to "Usuń", @printtype, :confirm => "Czy jesteś pewny?", :method => :delete %> |
+  <%= link_to "Pokaż wszystkie", printtypes_path %>
+</p>

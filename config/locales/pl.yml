@@ -1,0 +1,144 @@
+--- 
+pl: 
+  activerecord: 
+    models: 
+      format: "Format"  #g
+      image: "Zdjęcie"  #g
+      option: "Opcja"  #g
+      order: "Zamówienie"  #g
+      paper: "Papier"  #g
+      price: "Ceny"  #g
+      printtype: "Typy druku"  #g
+      update: "Aktualności"  #g
+      user: "Użytkownik"  #g
+
+    attributes: 
+      format: 
+        name: "Nazwa"  #g
+        value: "Wartość"  #g
+      option: 
+        name: "Nazwa"  #g
+        price: "Cena"  #g
+        per_unit: "Od ilości?"  #g
+        printtypes: "Typy druku"  #g
+        orders: "Zamówienia"  #g
+
+      order: 
+        total_price: "Wartość zamówienia"  #g
+        user_email: "Email"  #g
+        user_address: "Ulica"  #g
+        user_city: "Miasto"  #g
+        user_postcode: "Kod pocztowy"  #g
+        user_phone: "Telefon"  #g
+        info: "Uwagi"  #g
+        user_name: "Imię i nazwisko / Firma"  #g
+        quantity: "Ilość"  #g
+        color: "Kolor"  #g
+        number_of_colors1: "Liczba kolorów z jednej strony"  #g
+        number_of_colors2: "Liczba kolorów z drugiej strony"  #g
+        dimension: "Wymiar"  #g
+        images: "Pliki"  #g
+        user: "Użytkownik"  #g    
+        paper: "Papier"  #g
+        printtype: "Typy druku"  #g
+        format: "Format"  #g
+        options: "Opcje"  #g
+
+      paper: 
+        name: "Nazwa"  #g
+        width: "Szerokość"  #g
+        price: "Cena"  #g
+        printtypes: "Typy druku"  #g
+        orders: "Zamówienia"  #g
+
+      price: 
+        value: "Wartość"  #g
+        bracket: "Wspornik"  #g
+        color: "Kolor"  #g
+        format: "Format"  #g
+        printtype: "Typy druku"  #g
+
+      printtype: 
+        name: "Nazwa"  #g
+        papers: "Papier"  #g
+        formats: "Formaty"  #g
+        orders: "Zamówienia"  #g
+        options: "Opcje"  #g
+        prices: "Ceny"  #g
+
+      update: 
+        title: "Tytuł"  #g
+        body: "Treść"  #g
+        short_body: Skrócona treść
+
+      user: 
+        email: "Email"  #g
+        encrypted_password: "Hasło"  #g
+        current_password: "Aktualne hasło"
+        password: Nowe hasło
+        password_confirmation: Powtórz nowe hasło
+        password_salt: "Hasąo soli"  #g
+        reset_password_token: "Resetowanie hasła tokena"  #g
+        remember_token: "Pamiętaj token"  #g
+        remember_created_at: "Pamiętaj, stworzony w"  #g
+        name: "Imię i nazwisko / Firma"  #g
+        address: "Ulica"  #g
+        city: "Miasto"  #g
+        postcode: "Kod pocztowy"  #g
+        phone: "Telefon"  #g
+        admin: "Admin"  #g                       
+        orders: "Zamówienia"  #g
+        nip: NIP
+    errors: 
+      messages: 
+        record_invalid: "Negatywne sprawdzenie poprawności: %{errors}"
+        confirmation: "nie zgadza się z potwierdzeniem"
+        blank: " - pole nie może być puste"
+        not_an_integer: " - wartość nie jest liczbą całkowitą"
+        invalid: " - pole jest nieprawidłowe"
+        exclusion: "znajduje się na liście zabronionych wartości"
+        too_short: " - wartość jest za krótka (minimalnie %{count} znaków)"
+        wrong_length: " - wartość jest nieprawidłowej długości (powinna wynosić %{count} znaków)"
+        empty: " - pole nie może być puste"
+        less_than: " - wartość musi być mniejsza niż %{count}"
+        greater_than: " - wartość musi być większa niż %{count}"
+        equal_to: " - wartość musi być równa %{count}"
+        too_long: " - wartość jest za długa (maksymalnie %{count} znaków)"
+        taken: "zostało już zajęte"
+        accepted: " - pole musi być zaakceptowane"
+        not_a_number: " - wartość nie jest liczbą"
+        inclusion: "nie znajduje się na liście dopuszczalnych wartości"
+      template: 
+        header: 
+          one: "Popraw formularz"
+          other: "Popraw formularz"
+        body: "Błędy dotyczą następujących pól:"
+      full_messages: 
+        format: "%{attribute} %{message}"
+  mail:
+    reset_password:
+     hello: Witaj
+     change_password: Zmień hasło
+     t1: Aby zmienić hasło do strony ... kliknij w link poniżej
+     t2: Jeśli nie żądałeś zmiany hasła, zignoruj tego maila.
+     t3: Twoje hasło nie zostanie zmienione, jeśli nie klikniesz w powyższy link.
+  devise: 
+    passwords: 
+      send_instructions: "W ciągu kilku minut otrzymasz email z instrukcjami dotyczącymi zmiany hasła."
+      link: "Nie pamiętasz hasła?"
+      updated: "Hasło zostało pomyślnie zmienione. Jesteś teraz zalogowany."
+    mailer: 
+      reset_password_instructions: "Instrukcje dotyczące zmiany hasła"
+    registrations: 
+      link: "Zarejestruj się"           
+      updated: "Pomyślnie uaktualniłeś swoje konto."
+      signed_up: "Zostałeś pomyślnie zarejestrowany."
+    sessions: 
+      signed_out: "Pomyślnie wylogowano."
+      unauthenticated: "Zaloguj się aby kontynuować."
+      invalid: "Niepoprawny email lub hasło."
+      link: "Zaloguj się"
+      signed_in: "Pomyślnie zalogowano."
+      invalid_token: Invalid authentication token.
+    confirmations: 
+      link: ""

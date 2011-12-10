@@ -1,0 +1,28 @@
+<% title "Cena" %>
+
+<p>
+  <strong>Wartość:</strong>
+  <%=h @price.value %>
+</p>
+<p>
+  <strong>Górna granica przedziału:</strong>
+  <%=h @price.bracket %>
+</p>
+<p>
+  <strong>Kolor:</strong>
+  <%=h @price.color %>
+</p>
+<p>
+  <strong>Format:</strong>
+  <%=h @price.format.name if @price.format%>
+</p>
+<p>
+  <strong>Typ druku:</strong>
+  <%=h @price.printtype.name %>
+</p>
+
+<p>
+  <%= link_to "Edytuj", edit_price_path(@price) %> |
+  <%= link_to "Usuń", @price, :confirm => "Czy jesteś pewny?", :method => :delete %> |
+  <%= link_to "Pokaż wszystkie", prices_path %>
+</p>

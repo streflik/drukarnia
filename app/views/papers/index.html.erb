@@ -1,0 +1,22 @@
+<% title "Papier" %>
+
+<table>
+  <tr>
+    <th>Nazwa</th>
+    <th>Szerokość</th>
+    <th>Cena</th>
+    <th>Typ druku</th>
+  </tr>
+  <% for paper in @papers %>
+    <tr>
+      <td><%=h paper.name %></td>
+      <td><%=h paper.width %></td>
+      <td><%=h paper.price %></td>
+      <td><%= link_to "Pokaż", paper %></td>
+      <td><%= link_to "Edytuj", edit_paper_path(paper) %></td>
+      <td><%= link_to "Usuń", paper, :confirm => "Czy jesteś pewny?", :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Nowy papier", new_paper_path %></p>

@@ -1,0 +1,18 @@
+<% form_for @format do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :value %><br />
+    <%= f.text_field :value %>
+  </p>
+      <p>
+    <%= f.label :width %><br />
+    <%= f.text_field :width %>
+  </p>
+    <p><%= f.label :printtype_id%><br/>
+    <%= f.collection_select :printtype_id, Printtype.all, :id,:name%></p>
+  <p><%= f.submit "Zapisz"%></p>
+<% end %>

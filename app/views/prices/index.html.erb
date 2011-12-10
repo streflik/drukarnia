@@ -1,0 +1,23 @@
+<% title "Ceny" %>
+
+<table>
+  <tr>
+    <th>Wartość</th>
+    <th>Górna granica przedziału</th>
+    <th>Kolor</th>
+    <th>Format</th>
+  </tr>
+  <% for price in @prices %>
+    <tr>
+      <td><%=h price.value %></td>
+      <td><%=h price.bracket %></td>
+      <td><%=h COLORS.index price.color %></td>
+      <td><%=h price.format.name if price.format%></td>
+      <td><%= link_to "Pokaż", price %></td>
+      <td><%= link_to "Edytuj", edit_price_path(price) %></td>
+      <td><%= link_to "Usuń", price, :confirm => "Czy jesteś pewny?", :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Nowa cena", new_price_path %></p>

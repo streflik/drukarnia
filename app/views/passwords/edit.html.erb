@@ -1,0 +1,21 @@
+
+  <% title "Zmień hasło" %>
+  <div id="stylized" class="myform">
+    <% form_for resource_name, resource, :url => password_path(resource_name), :html => { :method => :put } do |f| %>
+
+        <h3>Wpisz nowe hasło</h3>
+
+   <p> <%= f.error_messages %>  </p>
+    <%= f.hidden_field :reset_password_token %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password, :class=>"field" %>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, :class=>"field" %>
+
+    <%= f.submit "Zmień hasło", :class=>"button" %>
+
+        <div class="spacer"></div>
+    <% end %>
+  </div>

@@ -1,0 +1,129 @@
+<% title "Uzupełnij dane i dodaj plik do wydruku" %>
+
+<p class="price">Szacowana cena: <span><%= @order.total_price %> zł</span></p>
+
+<div id="stylized" class="myform">
+  <% form_for @order, :url=>step_two_order_path(@order) do |f| %>
+
+      <%- if show_title? -%>
+          <h2><%= h yield(:title) %></h2>
+      <%- end -%>
+
+      <p>Nasz konsultant skontaktuje się z Tobą w ciągu 24 godzin.<br/>Potwierdzi cenę i możliwości realizacji.</p>
+
+      <%= f.error_messages %>
+
+      <% if @order.errors.empty? && @user!={} %>
+
+          <label>Imię i nazwisko / Firma</label>
+          <%= f.text_field :user_name, :value=>@user.name, :class=>"field" %>
+
+
+          <%= f.label :user_email %>
+          <%= f.text_field :user_email, :value=>@user.email, :class=>"field" %>
+
+
+          <%= f.label :user_address %>
+          <%= f.text_field :user_address, :value=>@user.address, :class=>"field" %>
+
+
+          <%= f.label :user_city %>
+          <%= f.text_field :user_city, :value=>@user.city, :class=>"field" %>
+
+
+          <%= f.label :user_postcode %>
+          <%= f.text_field :user_postcode, :value=>@user.postcode, :class=>"field" %>
+
+
+          <%= f.label :user_phone %>
+          <%= f.text_field :user_phone, :value=>@user.phone, :class=>"field" %>
+
+          <label>NIP
+            <span class="small">W przypadku firmy</span>
+          </label>
+          <%#= f.text_field :nip, :class=>"field" %>
+          <%= f.text_field :user_nip, :class=>"field" %>
+
+          <%= f.hidden_field :files_count, :value=>'0' %>
+
+      <% else %>
+
+          <label>Imię i nazwisko / Firma</label>
+          <%= f.text_field :user_name, :class=>"field" %>
+
+
+          <%= f.label :user_email %>
+          <%= f.text_field :user_email, :class=>"field" %>
+
+
+          <%= f.label :user_address %>
+          <%= f.text_field :user_address, :class=>"field" %>
+
+
+          <%= f.label :user_city %>
+          <%= f.text_field :user_city, :class=>"field" %>
+
+
+          <%= f.label :user_postcode %>
+          <%= f.text_field :user_postcode, :class=>"field" %>
+
+
+          <%= f.label :user_phone %>
+          <%= f.text_field :user_phone, :class=>"field" %>
+
+          <label>NIP
+            <span class="small">W przypadku firmy</span>
+          </label>
+          <%= f.text_field :user_nip, :class=>"field" %>
+
+          <%= f.hidden_field :files_count, :value=>"0" %>
+      <% end %>
+
+
+      <%= f.label :info %>
+      <%= f.text_area :info %>
+
+
+      <%= s3_swf_upload_tag :upload         =>"Prześlij",
+                            :initial_message=>"Wybierz pliki do przesłania...",
+                            :max_file_size  => "314572800",
+                            :prefix         =>"#{@order.created_at.strftime("%d-%m-%Y")}/#{@order.id}", :success => "
+    $('order_files_count').value='1';
+$('uploaded').insert('<li>'+filename+'</li>');
+new Ajax.Request('#{save_to_database_s3_uploads_path}',
+{ method: 'POST', parameters: 'order_id=#{@order.id}&content_file_name='+filename+'&content_file_size='+filesize+
+'&content_content_type='+contenttype+'&authenticity_token=#{form_authenticity_token}'
+});" %>
+
+      <label>Przesłane pliki:</label>
+
+      <div class="placer uploaded">
+        <ul id="uploaded">
+          <% if @order.images %>
+              <% @order.images.each do |i| %>
+                  <li><%= i.content_file_name %></li>
+              <% end %>
+          <% end %>
+        </ul>
+      </div>
+
+
+      <%= f.submit "Zapisz", :onclick=>"return check_pictures();", :class=>"button" %>
+
+      <div class="spacer"></div>
+
+  <% end %>
+</div>
+
+
+<script type="text/javascript">
+    function check_pictures() {
+        if ($('order_files_count').value == '0') {
+            return confirm('Nie przesłano żadnych plików. Czy na pewno kontynuować?');
+
+        } else {
+            return true;
+        }
+    }
+
+</script>
