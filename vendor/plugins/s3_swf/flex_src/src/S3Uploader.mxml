@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+                backgroundAlpha="0"
+                backgroundColor="#FFFFFF"
+                creationComplete="registerCallbacks();"
+                layout="absolute">
+
+
+    <mx:Style source="../assets/styles/main.css"/>
+
+    <mx:Script source="S3Uploader.as"/>
+
+    <mx:VBox width="385" height="150">
+
+        <mx:DataGrid id="filesDataGrid" 
+                     left="0" 
+                     right="0" 
+                     bottom="30" 
+                     top="5" 
+                     width="100%"
+                     rowCount="3" />
+
+        <mx:ProgressBar id="uploadProgressBar"
+                        width="100%"
+                        labelPlacement="center"
+                        trackHeight="15" 
+                        left="0" 
+                        right="0"
+                        top="0"
+                        bottom="0" 
+                        height="20" 
+                        mode="manual" 
+                        label=""/>
+        
+    	<mx:ControlBar paddingTop="0" paddingBottom="0">
+            <mx:HBox paddingTop="0" paddingBottom="0">
+                <mx:Button label="Browse..." id="browseButton" paddingBottom="0"/>
+                <mx:Button label="Upload" id="uploadButton" paddingBottom="0"/>
+                <mx:Button label="Remove" id="removeSelectedButton" paddingBottom="0"/>
+                <mx:Button label="Remove All" id="removeAllButton" paddingBottom="0"/>
+            </mx:HBox>
+        </mx:ControlBar>
+
+    </mx:VBox>
+
+</mx:Application>

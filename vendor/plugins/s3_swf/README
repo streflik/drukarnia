@@ -1,0 +1,87 @@
+S3SwfUpload
+===========
+
+S3SwfUpload allow user uploading a file to S3 directly, so you can save the cost of uploading process in your app server.
+This version of the plugin features the ability to upload multiple files.
+It currently has some hard coded constrains on file type and size that are PRX specific, but those will be removed presently.
+
+Install
+=======
+
+./script/plugin install git://github.com/PRX/s3-swf-upload-plugin.git
+
+Usage
+=======
+
+1. $ script/generate s3_swf_upload
+
+2. Edit app/controller/s3_uploads_controller.rb
+
+   You need to skip any authentication for this controller, the flash
+   needs to be able to access it.  There's a big comment showing you
+   where to do this :) 
+
+3. Configure your amazon parameters.  Either set these through the
+   following environment variables:
+
+        AMAZON_S3_SWF_UPLOAD_BUCKET => my_public_bucket
+        AMAZON_ACCESS_KEY_ID        => secret
+        AMAZON_SECRET_ACCESS_KEY    => very secret
+        AMAZON_S3_SWF_UPLOAD_ACL    => public-read
+        AMAZON_S3_SWF_MAX_FILE_SIZE => 209715200
+
+   or hardcode them in     config/amazon_s3.yml
+
+   (The corresponding yml vars are: 
+     bucket_name, access_key_id, secret_access_key, acl, max_file_size)
+
+   The acl will default to private.
+
+   Your rails app can also change bucket, acl and max file size like
+   this:
+
+    S3SwfUpload::S3Config.bucket = 'different_one'
+    S3SwfUpload::S3Config.acl = 'private'
+    S3SwfUpload::S3Config.max_file_size = 1024
+    
+4. Upload a crossdomain.xml in your bucket and make it public-read.
+
+   You can find what you need in generators/s3-swf-upload/templates in
+   the plugin!
+
+5. init s3_swf object:
+
+  <%= s3_swf_upload_tag %>
+
+6. When you click upload, your file will be upload to http://bucket.s3.amazonasw.com/ by default.
+
+   IE the default prefix is '' (no prefix)
+
+7. If you want to customize its behavior, here's a more complex example:
+
+    <%= raw s3_swf_upload_tag(
+            :width => 390,
+            :height => 150,
+            :file_types=>'*.jpg;*.gif;*.png;',
+            :file_type_descriptions =>"Image files.",
+            :success => "$.post('/attachments.js',{'filename':filename, 
+                                                   'filesize':filesize,
+                                                   'content_type':contenttype,
+                                                   'authenticity_token':'#{form_authenticity_token}'}, 
+                                                   null, 'script');",
+            :failed => 'alert("failed: " + status);',
+            :info => '$("#upload-messages").html(status);',
+            :prefix => "public/attachment",
+            :initial_message=> 'Click "Browse..." to find files to upload.')
+    %>
+    </div>
+    <div id="upload-messages" name="upload-messages" class="notice"></div>
+
+
+  In this case, files will be uploaded to:
+    http://bucket.s3.amazonasw.com/public/attachment
+  and when successful, will post the information about the file uploaded to the attachments controller as a json post using JQuery.
+
+Original plugin is Copyright (c) 2008 elctech, released under the MIT license
+
+Updates to plugin for multiple file uploader are Copyright (c) 2010 PRX, released under the MIT license
